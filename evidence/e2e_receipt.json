@@ -1,0 +1,23 @@
+{
+ "tool": "gmb.py RFC-0001 reference implementation",
+ "date": "2026-11-16",
+ "selftest": "3/3 ALL-PASS",
+ "e2e": {
+  "self_bootstrapped": {
+   "expected": "PARTIAL",
+   "got": "PARTIAL",
+   "delta_recalc": -1.0,
+   "exit": 1,
+   "pass": true
+  },
+  "fake_wilson_negative_control": {
+   "expected": "FAIL",
+   "got": "FAIL",
+   "exit": 2,
+   "pass": true
+  },
+  "init_lock_sha256": "f79faa3031f1bd059a4786b7eed4261b3733d98f05de44461c54404e0038f391"
+ },
+ "verdict": "ALL-PASS",
+ "license": "CC-BY-4.0"
+}

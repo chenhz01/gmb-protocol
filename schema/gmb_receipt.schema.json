@@ -1,0 +1,162 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://github.com/chenhz01/gmb-protocol/schema/gmb_receipt.schema.json",
+ "title": "GMB Receipt v0.1",
+ "description": "Machine-checkable receipt for RFC-0001 Gate Mutation Benchmark conformance.",
+ "type": "object",
+ "required": [
+  "gmb_version",
+  "protocol_sha256",
+  "gate_id",
+  "run_at",
+  "criterion_before_evidence",
+  "coverage_scope",
+  "independence_definition",
+  "no_gate_added",
+  "self_set",
+  "indep_set",
+  "coupling_delta",
+  "benign_set",
+  "verdict",
+  "four_non_claims_respected"
+ ],
+ "properties": {
+  "gmb_version": {
+   "const": "0.1"
+  },
+  "protocol_sha256": {
+   "type": "string",
+   "pattern": "^[0-9a-f]{64}$"
+  },
+  "gate_id": {
+   "type": "string",
+   "minLength": 1
+  },
+  "run_at": {
+   "type": "string",
+   "format": "date-time"
+  },
+  "criterion_before_evidence": {
+   "const": true,
+   "description": "Red card: must be locked before running the gate."
+  },
+  "coverage_scope": {
+   "type": "object",
+   "required": [
+    "gates_included",
+    "gates_excluded",
+    "exclusion_reason"
+   ],
+   "properties": {
+    "gates_included": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "gates_excluded": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "exclusion_reason": {
+     "type": "string",
+     "minLength": 1
+    }
+   },
+   "additionalProperties": false
+  },
+  "independence_definition": {
+   "enum": [
+    "strong",
+    "weak",
+    "self"
+   ],
+   "description": "'self' is explicitly NOT independent and must not be reported as such."
+  },
+  "no_gate_added": {
+   "const": true
+  },
+  "self_set": {
+   "$ref": "#/$defs/measure"
+  },
+  "indep_set": {
+   "$ref": "#/$defs/measure"
+  },
+  "coupling_delta": {
+   "type": "number",
+   "minimum": -1,
+   "maximum": 1
+  },
+  "benign_set": {
+   "type": "object",
+   "required": [
+    "n",
+    "FPR"
+   ],
+   "properties": {
+    "n": {
+     "type": "integer",
+     "minimum": 1
+    },
+    "FPR": {
+     "type": "number",
+     "minimum": 0,
+     "maximum": 1
+    }
+   },
+   "additionalProperties": false
+  },
+  "verdict": {
+   "enum": [
+    "PASS",
+    "PARTIAL",
+    "FAIL"
+   ]
+  },
+  "verdict_basis": {
+   "type": "string"
+  },
+  "four_non_claims_respected": {
+   "const": true
+  },
+  "negative_control_pass": {
+   "type": "boolean"
+  }
+ },
+ "additionalProperties": false,
+ "$defs": {
+  "measure": {
+   "type": "object",
+   "required": [
+    "n",
+    "TPR",
+    "wilson95"
+   ],
+   "properties": {
+    "n": {
+     "type": "integer",
+     "minimum": 1
+    },
+    "TPR": {
+     "type": "number",
+     "minimum": 0,
+     "maximum": 1
+    },
+    "wilson95": {
+     "type": "array",
+     "items": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+     },
+     "minItems": 2,
+     "maxItems": 2
+    }
+   },
+   "additionalProperties": false
+  }
+ },
+ "license": "CC-BY-4.0"
+}

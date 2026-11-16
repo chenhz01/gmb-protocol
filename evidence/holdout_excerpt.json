@@ -1,0 +1,27 @@
+{
+ "source_note": "Statistics excerpt from a real hold-out run; document name and per-sample rows redacted for public release.",
+ "harness": "holdout_harness.py v1.0",
+ "no_gate_added": true,
+ "independence_definition": "弱独立：变异源为 v1.0→v1.1 真实发生过的错误模式回放 + 字段齐全但结论改错的语义腐化；生成前未按 GATES 清单规避，本轮不补任何闸。仍属同一作者同一框架，故只能判定『过拟合是否被实测坐实』，不能判定『门禁总体有效』；真正独立需第三方设计变异集。",
+ "scope_note": "完整性闸（字数三通道一致 / sha256 一致）对任何字节改动必然报警，属预期行为，与 R1–R4 一致地排除在 FPR 与 TPR_semantic 之外。口径先定后测。",
+ "negative_control_pass": true,
+ "TPR_all": 1.0,
+ "TPR_all_wilson95": [
+  0.7575,
+  1
+ ],
+ "TPR_semantic": 0.0,
+ "TPR_semantic_wilson95": [
+  0,
+  0.2425
+ ],
+ "FPR_semantic": 0.0,
+ "comparison_with_R4": {
+  "R4_document": "[redacted internal dossier v1.1]",
+  "R4_TPR_semantic": 1.0,
+  "holdout_TPR_semantic": 0.0,
+  "delta": -1.0,
+  "note": "R4 与 hold-out 使用同一套 13 项硬闸；差别只在缺陷样本来源，故差值度量的是过拟合幅度，不是判据变化。"
+ },
+ "license": "CC-BY-4.0"
+}

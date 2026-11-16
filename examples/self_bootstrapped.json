@@ -1,0 +1,58 @@
+{
+ "gmb_version": "0.1",
+ "protocol_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+ "gate_id": "redacted-dossier-13gate",
+ "run_at": "2026-11-14T21:42:00+08:00",
+ "criterion_before_evidence": true,
+ "coverage_scope": {
+  "gates_included": [
+   "R1-red-card",
+   "R2-criterion",
+   "R3-criterion-before-evidence",
+   "R4-three-line-verdict",
+   "R5-value-region",
+   "R6-based-assertion",
+   "R7-field-boundary",
+   "R8-cap",
+   "R9",
+   "R10",
+   "R11",
+   "R12",
+   "R13"
+  ],
+  "gates_excluded": [
+   "integrity-gates:字数三通道一致",
+   "integrity-gates:sha256一致"
+  ],
+  "exclusion_reason": "完整性闸对任何字节改动必然报警，属预期行为；口径先定后测，先于运行锁定（scope_note 原文）"
+ },
+ "independence_definition": "weak",
+ "no_gate_added": true,
+ "self_set": {
+  "n": 12,
+  "TPR": 1.0,
+  "wilson95": [
+   0.7575,
+   1.0
+  ]
+ },
+ "indep_set": {
+  "n": 12,
+  "TPR": 0.0,
+  "wilson95": [
+   0.0,
+   0.2425
+  ]
+ },
+ "coupling_delta": -1.0,
+ "benign_set": {
+  "n": 6,
+  "FPR": 0.0
+ },
+ "verdict": "PARTIAL",
+ "verdict_basis": "弱独立 n=12 下限 0；结构可复跑但语义检测力不可断言（TPR_semantic 0.0 [0,0.2425]）",
+ "four_non_claims_respected": true,
+ "negative_control_pass": true,
+ "source_receipt": "[redacted internal dossier]",
+ "license": "CC-BY-4.0"
+}

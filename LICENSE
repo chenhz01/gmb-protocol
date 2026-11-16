@@ -1,0 +1,22 @@
+# Dual license (constitution F21)
+
+This repository uses two licenses, split by directory. This is an index,
+not a third license.
+
+| Path | License | File |
+|---|---|---|
+| `src/` (source code) | Apache-2.0 | [LICENSE-CODE](LICENSE-CODE) |
+| `spec/`, `schema/`, `examples/`, `evidence/`, `README.md` (specification, data, docs) | CC BY 4.0 | [LICENSE-DOCS](LICENSE-DOCS) |
+
+**Code (Apache-2.0)**: free use, modification, distribution, patent grant;
+must retain notices; changes must be marked; no warranty.
+
+**Docs/data (CC BY 4.0)**: free share and adapt, even commercially;
+must give attribution, link the license, and indicate changes; no
+additional restrictions; no warranty.
+
+SPDX identifiers appear in each file header. If a file lacks a header,
+apply the license of its directory per the table above.
+
+Copyright: GMB-protocol contributors (organizational attribution, no
+individual name — constitution F27 / publication-safety rule P2).

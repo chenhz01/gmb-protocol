@@ -1,0 +1,29 @@
+{
+ "tool": "gmb-protocol F5 clean-env reproduction (REV70 F5)",
+ "date": "2026-11-16",
+ "method": "只把待推送的公开文件复制到全新临时目录（非原地），从零跑 README 三步命令；无任何源码外的本地依赖、无网络",
+ "env": "python 3.13.12 (managed), Windows, 标准库 only",
+ "files_present": [
+  "src/gmb.py",
+  "spec/RFC-0001.md",
+  "schema/gmb_receipt.schema.json",
+  "examples/self_bootstrapped.json",
+  "evidence/*.json",
+  "README.md",
+  "LICENSE",
+  "LICENSE-CODE",
+  "LICENSE-DOCS",
+  "AGENTS.md"
+ ],
+ "checks": [
+  {"cmd": "python src/gmb.py selftest", "expect": "3/3 ALL-PASS exit=0", "got": "3/3 ALL-PASS", "exit": 0, "result": "PASS"},
+  {"cmd": "python src/gmb.py init --gate-id clean-env-gate --out protocol.json", "expect": "exit=0 + sha256", "got": "sha256=370f7ef5...d841", "exit": 0, "result": "PASS"},
+  {"cmd": "python src/gmb.py verify --receipt examples/self_bootstrapped.json --protocol protocol.json", "expect": "PARTIAL exit=1", "got": "PARTIAL, delta=-1.0 复算一致", "exit": 1, "result": "PASS"},
+  {"cmd": "fake Wilson [0.5,0.9] → verify", "expect": "FAIL exit=2（负对照）", "got": "FAIL, MISMATCH 抓出", "exit": 2, "result": "PASS"}
+ ],
+ "third_party_imports": 0,
+ "network_calls": 0,
+ "verdict": "PASS",
+ "note": "exit=1 是 PARTIAL（不可断言）的预期退出码，不是失败；F5 判据是'干净机器一条命令复现一致'，实测达成",
+ "license": "CC-BY-4.0"
+}
